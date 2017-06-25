@@ -1,0 +1,3298 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    131877,       3290]
+NotebookOptionsPosition[    123502,       3081]
+NotebookOutlinePosition[    129850,       3222]
+CellTagsIndexPosition[    129807,       3219]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["The center of US population", "Title",
+ CellChangeTimes->{{3.700774153171832*^9, 3.700774159196458*^9}, {
+  3.705104157104324*^9, 3.7051041574063416`*^9}, {3.70568519155404*^9, 
+  3.705685209964157*^9}, {3.707172400027864*^9, 3.707172417242509*^9}, {
+  3.707332981453066*^9, 3.707332986755595*^9}},
+ ExpressionUUID -> "0f190da8-f8db-481a-8e25-9ae1b777a7b9"],
+
+Cell["\<\
+How do we find the geographic center of the US based on population?  This \
+lesson will explore that concept.\
+\>", "Abstract",
+ CellChangeTimes->{{3.700774172671139*^9, 3.700774220850109*^9}, {
+  3.700778895632181*^9, 3.700778896308676*^9}, {3.7051041615775795`*^9, 
+  3.705104170817108*^9}, {3.7071724279467287`*^9, 3.707172445123316*^9}, {
+  3.7073329978835697`*^9, 3.707333047860299*^9}},
+ ExpressionUUID -> "2a082af0-c10d-47ec-81a4-6d97fa70db67"],
+
+Cell[CellGroupData[{
+
+Cell["Retrieving population state by state", "Section",
+ CellChangeTimes->{{3.700774708350976*^9, 3.700774714085747*^9}, {
+  3.7051042493566003`*^9, 3.7051042513157125`*^9}, {3.705686166481989*^9, 
+  3.7056861672865133`*^9}, {3.7071724936685*^9, 3.707172505659873*^9}, {
+  3.7073330580687923`*^9, 3.7073330847060747`*^9}},
+ ExpressionUUID -> "6f874ac9-24f0-4b0e-8c09-dc25b16d8a27"],
+
+Cell["\<\
+Find the population of each state and its geo-center (latitude and \
+longitude).  \
+\>", "Text",
+ CellChangeTimes->{{3.700774312865305*^9, 3.700774350341485*^9}, {
+  3.7051042689957237`*^9, 3.7051043842073135`*^9}, {3.705105072313671*^9, 
+  3.705105092602831*^9}, {3.705683778330366*^9, 3.705683783009487*^9}, {
+  3.707172889461062*^9, 3.707172923903103*^9}, {3.707333108909707*^9, 
+  3.707333117717887*^9}},
+ ExpressionUUID -> "502d1db0-82d1-4b31-af91-03c5cae1628e"],
+
+Cell["\<\
+Direction/Caption: Query Wolfram/Alpha for each state\[CloseCurlyQuote]s \
+population\
+\>", "Direction",
+ CellChangeTimes->{{3.700774271565714*^9, 3.70077428101515*^9}, {
+  3.70510436631329*^9, 3.705104402940385*^9}, {3.7051044918334694`*^9, 
+  3.705104547547656*^9}, {3.705104583096689*^9, 3.7051045898510756`*^9}, {
+  3.705105030495279*^9, 3.70510503226538*^9}, {3.7051051046345196`*^9, 
+  3.7051052440884957`*^9}, {3.7071732220297832`*^9, 3.707173237542446*^9}},
+ ExpressionUUID -> "f91531d9-7ef2-4f97-9564-efa3c23c39ac"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"statePopulation", " ", "=", 
+  RowBox[{"EntityValue", "[", 
+   RowBox[{
+    RowBox[{"EntityClass", "[", 
+     RowBox[{
+     "\"\<AdministrativeDivision\>\"", ",", "\"\<AllUSStatesPlusDC\>\""}], 
+     "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Name\>\"", ",", "\"\<Latitude\>\"", ",", "\"\<Longitude\>\"", ",", 
+      "\"\<Population\>\""}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.700774255707568*^9, 3.70077426783818*^9}, {
+  3.7051044212184305`*^9, 3.705104469954218*^9}, {3.705105265576725*^9, 
+  3.7051053685916166`*^9}, {3.705105596267639*^9, 3.705105691655095*^9}, {
+  3.7056842975415497`*^9, 3.705684356018416*^9}, {3.707333304659649*^9, 
+  3.707333448181485*^9}},
+ CellLabel->"In[5]:=",
+ ExpressionUUID -> "946b7b79-9e78-4152-8981-1a2f46115509"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"\<\"Alabama, United States\"\>", 
+      TemplateBox[{
+       "32.78066773274687`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "86.8336642480287`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4849377","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Alaska, United States\"\>", 
+      TemplateBox[{
+       "64.53325502228302`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "152.7497197704388`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"736732","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Arizona, United States\"\>", 
+      TemplateBox[{
+       "34.328710239492224`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "111.67006954108902`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6731484","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Arkansas, United States\"\>", 
+      TemplateBox[{
+       "34.90006710307509`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "92.43725329448506`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2966369","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"California, United States\"\>", 
+      TemplateBox[{
+       "37.28105574018539`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "119.64765211057427`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"38802500","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Colorado, United States\"\>", 
+      TemplateBox[{
+       "39.00014688081292`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "105.546963587799`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5355866","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Connecticut, United States\"\>", 
+      TemplateBox[{
+       "41.60433638903997`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "72.70147679683339`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3596677","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Delaware, United States\"\>", 
+      TemplateBox[{
+       "38.96298211603413`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "75.50393849420063`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"935614","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"District of Columbia, United States\"\>", 
+      TemplateBox[{
+       "38.90259682899752`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "77.01587688229873`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"658893","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Florida, United States\"\>", 
+      TemplateBox[{
+       "28.66481239914666`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "82.52332310182058`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"19893297","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Georgia, United States\"\>", 
+      TemplateBox[{
+       "32.655995953676154`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "83.45857943324698`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"10097343","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Hawaii, United States\"\>", 
+      TemplateBox[{
+       "19.608027334596777`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "155.54541155520442`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1419561","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Idaho, United States\"\>", 
+      TemplateBox[{
+       "44.39763809452522`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "114.6647170728324`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1634464","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Illinois, United States\"\>", 
+      TemplateBox[{
+       "40.06701096951178`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "89.19984461420816`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"12880580","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Indiana, United States\"\>", 
+      TemplateBox[{
+       "39.90911044712073`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "86.28690883021002`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6596855","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Iowa, United States\"\>", 
+      TemplateBox[{
+       "42.079783931683664`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "93.49057031433053`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3107126","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Kansas, United States\"\>", 
+      TemplateBox[{
+       "38.4856996201788`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "98.3741157330955`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2904021","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Kentucky, United States\"\>", 
+      TemplateBox[{
+       "37.526171421239084`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "85.28081094826666`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4413457","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Louisiana, United States\"\>", 
+      TemplateBox[{
+       "31.054982270700837`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "91.99673945385084`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4649676","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Maine, United States\"\>", 
+      TemplateBox[{
+       "45.36146863422974`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "69.26289727637295`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1330089","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Maryland, United States\"\>", 
+      TemplateBox[{
+       "39.016534884757455`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "76.77435365748076`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5976407","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Massachusetts, United States\"\>", 
+      TemplateBox[{
+       "42.24883192802069`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "71.78597560325983`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6745408","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Michigan, United States\"\>", 
+      TemplateBox[{
+       "43.460212174370994`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "84.6232132017515`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"9909877","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Minnesota, United States\"\>", 
+      TemplateBox[{
+       "46.32345684644935`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "94.2933130768429`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5457173","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Mississippi, United States\"\>", 
+      TemplateBox[{
+       "32.7402598983134`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "89.66777614525104`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2994079","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Missouri, United States\"\>", 
+      TemplateBox[{
+       "38.37352016618482`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "92.47354496346969`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6063589","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Montana, United States\"\>", 
+      TemplateBox[{
+       "47.04021063329052`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "109.65281665076692`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1023579","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Nebraska, United States\"\>", 
+      TemplateBox[{
+       "41.52775208447308`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "99.8077778378064`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1881503","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Nevada, United States\"\>", 
+      TemplateBox[{
+       "39.34008683239523`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "116.66290378891557`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2839099","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New Hampshire, United States\"\>", 
+      TemplateBox[{
+       "43.67359217260562`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "71.59379592024038`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1326813","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New Jersey, United States\"\>", 
+      TemplateBox[{
+       "40.18797225104717`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "74.6814040911826`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"8938175","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New Mexico, United States\"\>", 
+      TemplateBox[{
+       "34.42741407660169`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "106.10317519649905`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2085572","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New York, United States\"\>", 
+      TemplateBox[{
+       "42.95693438016504`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "75.52799848521127`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"19746227","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"North Carolina, United States\"\>", 
+      TemplateBox[{
+       "35.52877742497853`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "79.38062582870738`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"9943964","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"North Dakota, United States\"\>", 
+      TemplateBox[{
+       "47.443370627853625`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "100.47405512947441`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"739482","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Ohio, United States\"\>", 
+      TemplateBox[{
+       "40.278872453822444`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "82.79279835026352`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"11594163","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Oklahoma, United States\"\>", 
+      TemplateBox[{
+       "35.58709543698487`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "97.51442484483653`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3878051","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Oregon, United States\"\>", 
+      TemplateBox[{
+       "43.93217218297954`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "120.56754310845571`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3970239","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Pennsylvania, United States\"\>", 
+      TemplateBox[{
+       "40.87578136451641`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "77.80234691793905`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"12787209","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Rhode Island, United States\"\>", 
+      TemplateBox[{
+       "41.669424812226474`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "71.5888162785793`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1055173","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"South Carolina, United States\"\>", 
+      TemplateBox[{
+       "33.907688448479384`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "80.8987933519374`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4832482","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"South Dakota, United States\"\>", 
+      TemplateBox[{
+       "44.434954234164735`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "100.2262046283009`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"853175","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Tennessee, United States\"\>", 
+      TemplateBox[{
+       "35.84720459354897`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "86.3527613500658`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6549352","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Texas, United States\"\>", 
+      TemplateBox[{
+       "31.48178818314407`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "99.37005326650524`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"26956958","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Utah, United States\"\>", 
+      TemplateBox[{
+       "39.32431751897282`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "111.67720542443352`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2942902","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Vermont, United States\"\>", 
+      TemplateBox[{
+       "44.071233917758384`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "72.66957819625297`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"626562","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Virginia, United States\"\>", 
+      TemplateBox[{
+       "37.51336919099817`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "78.92051055564825`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"8326289","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Washington, United States\"\>", 
+      TemplateBox[{
+       "47.379328673432425`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "120.4163870662428`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"7061530","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"West Virginia, United States\"\>", 
+      TemplateBox[{
+       "38.6347474475439`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "80.6001940512084`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1850326","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Wisconsin, United States\"\>", 
+      TemplateBox[{
+       "44.63401817096603`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "90.02054765642295`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5757564","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Wyoming, United States\"\>", 
+      TemplateBox[{
+       "43.000376307441236`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "107.55176426564579`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"584153","\"people\"","people","\"People\""},
+       "QuantityTF"]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.7051053751989946`*^9, 3.705684296006131*^9, 
+  3.7073334614221992`*^9},
+ CellLabel->"Out[5]=",
+ ExpressionUUID -> "d5b2a762-6abf-47c4-8adb-b8f5f24ac552"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Create a GeoBubbleChart", "Section",
+ CellChangeTimes->{{3.70733984827127*^9, 3.7073398556362143`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"statePopulationGeoPositionList", " ", "=", " ", 
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"#1", " ", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], ",", 
+         RowBox[{"#1", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], "}"}], "]"}], "\[Rule]", 
+      RowBox[{"#1", "[", 
+       RowBox[{"[", "4", "]"}], "]"}]}], "&"}], ",", "statePopulation"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7073399277862797`*^9, 3.707340102422318*^9}, {
+  3.707340175688271*^9, 3.707340240920268*^9}, {3.707340306834298*^9, 
+  3.707340429045723*^9}, {3.707340470303054*^9, 3.707340487085814*^9}},
+ CellLabel->"In[43]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"32.78066773274687`", ",", 
+        RowBox[{"-", "86.8336642480287`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"4849377","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"64.53325502228302`", ",", 
+        RowBox[{"-", "152.7497197704388`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"736732","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"34.328710239492224`", ",", 
+        RowBox[{"-", "111.67006954108902`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"6731484","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"34.90006710307509`", ",", 
+        RowBox[{"-", "92.43725329448506`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"2966369","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"37.28105574018539`", ",", 
+        RowBox[{"-", "119.64765211057427`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"38802500","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"39.00014688081292`", ",", 
+        RowBox[{"-", "105.546963587799`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"5355866","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"41.60433638903997`", ",", 
+        RowBox[{"-", "72.70147679683339`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"3596677","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"38.96298211603413`", ",", 
+        RowBox[{"-", "75.50393849420063`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"935614","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"38.90259682899752`", ",", 
+        RowBox[{"-", "77.01587688229873`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"658893","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"28.66481239914666`", ",", 
+        RowBox[{"-", "82.52332310182058`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"19893297","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"32.655995953676154`", ",", 
+        RowBox[{"-", "83.45857943324698`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"10097343","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"19.608027334596777`", ",", 
+        RowBox[{"-", "155.54541155520442`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"1419561","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"44.39763809452522`", ",", 
+        RowBox[{"-", "114.6647170728324`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"1634464","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"40.06701096951178`", ",", 
+        RowBox[{"-", "89.19984461420816`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"12880580","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"39.90911044712073`", ",", 
+        RowBox[{"-", "86.28690883021002`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"6596855","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"42.079783931683664`", ",", 
+        RowBox[{"-", "93.49057031433053`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"3107126","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"38.4856996201788`", ",", 
+        RowBox[{"-", "98.3741157330955`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"2904021","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"37.526171421239084`", ",", 
+        RowBox[{"-", "85.28081094826666`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"4413457","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"31.054982270700837`", ",", 
+        RowBox[{"-", "91.99673945385084`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"4649676","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"45.36146863422974`", ",", 
+        RowBox[{"-", "69.26289727637295`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"1330089","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"39.016534884757455`", ",", 
+        RowBox[{"-", "76.77435365748076`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"5976407","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"42.24883192802069`", ",", 
+        RowBox[{"-", "71.78597560325983`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"6745408","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"43.460212174370994`", ",", 
+        RowBox[{"-", "84.6232132017515`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"9909877","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"46.32345684644935`", ",", 
+        RowBox[{"-", "94.2933130768429`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"5457173","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"32.7402598983134`", ",", 
+        RowBox[{"-", "89.66777614525104`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"2994079","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"38.37352016618482`", ",", 
+        RowBox[{"-", "92.47354496346969`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"6063589","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"47.04021063329052`", ",", 
+        RowBox[{"-", "109.65281665076692`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"1023579","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"41.52775208447308`", ",", 
+        RowBox[{"-", "99.8077778378064`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"1881503","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"39.34008683239523`", ",", 
+        RowBox[{"-", "116.66290378891557`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"2839099","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"43.67359217260562`", ",", 
+        RowBox[{"-", "71.59379592024038`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"1326813","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"40.18797225104717`", ",", 
+        RowBox[{"-", "74.6814040911826`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"8938175","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"34.42741407660169`", ",", 
+        RowBox[{"-", "106.10317519649905`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"2085572","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"42.95693438016504`", ",", 
+        RowBox[{"-", "75.52799848521127`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"19746227","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"35.52877742497853`", ",", 
+        RowBox[{"-", "79.38062582870738`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"9943964","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"47.443370627853625`", ",", 
+        RowBox[{"-", "100.47405512947441`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"739482","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"40.278872453822444`", ",", 
+        RowBox[{"-", "82.79279835026352`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"11594163","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"35.58709543698487`", ",", 
+        RowBox[{"-", "97.51442484483653`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"3878051","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"43.93217218297954`", ",", 
+        RowBox[{"-", "120.56754310845571`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"3970239","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"40.87578136451641`", ",", 
+        RowBox[{"-", "77.80234691793905`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"12787209","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"41.669424812226474`", ",", 
+        RowBox[{"-", "71.5888162785793`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"1055173","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"33.907688448479384`", ",", 
+        RowBox[{"-", "80.8987933519374`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"4832482","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"44.434954234164735`", ",", 
+        RowBox[{"-", "100.2262046283009`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"853175","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"35.84720459354897`", ",", 
+        RowBox[{"-", "86.3527613500658`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"6549352","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"31.48178818314407`", ",", 
+        RowBox[{"-", "99.37005326650524`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"26956958","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"39.32431751897282`", ",", 
+        RowBox[{"-", "111.67720542443352`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"2942902","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"44.071233917758384`", ",", 
+        RowBox[{"-", "72.66957819625297`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"626562","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"37.51336919099817`", ",", 
+        RowBox[{"-", "78.92051055564825`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"8326289","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"47.379328673432425`", ",", 
+        RowBox[{"-", "120.4163870662428`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"7061530","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"38.6347474475439`", ",", 
+        RowBox[{"-", "80.6001940512084`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"1850326","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"44.63401817096603`", ",", 
+        RowBox[{"-", "90.02054765642295`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"5757564","\"people\"","people","\"People\""},
+      "QuantityTF"]}], ",", 
+    RowBox[{
+     RowBox[{"GeoPosition", "[", 
+      RowBox[{"{", 
+       RowBox[{"43.000376307441236`", ",", 
+        RowBox[{"-", "107.55176426564579`"}]}], "}"}], "]"}], "\[Rule]", 
+     TemplateBox[{"584153","\"people\"","people","\"People\""},
+      "QuantityTF"]}]}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.7073404976938677`*^9},
+ CellLabel->"Out[43]="]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GeoBubbleChart", "[", "statePopulationGeoPositionList", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7073405795211353`*^9, 3.707340604097517*^9}},
+ CellLabel->"In[44]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"GeoBubbleChart", "(", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"32.78066773274687`", ",", 
+         RowBox[{"-", "86.8336642480287`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"4849377","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"64.53325502228302`", ",", 
+         RowBox[{"-", "152.7497197704388`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"736732","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"34.328710239492224`", ",", 
+         RowBox[{"-", "111.67006954108902`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"6731484","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"34.90006710307509`", ",", 
+         RowBox[{"-", "92.43725329448506`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"2966369","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"37.28105574018539`", ",", 
+         RowBox[{"-", "119.64765211057427`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"38802500","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"39.00014688081292`", ",", 
+         RowBox[{"-", "105.546963587799`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"5355866","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"41.60433638903997`", ",", 
+         RowBox[{"-", "72.70147679683339`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"3596677","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"38.96298211603413`", ",", 
+         RowBox[{"-", "75.50393849420063`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"935614","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"38.90259682899752`", ",", 
+         RowBox[{"-", "77.01587688229873`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"658893","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"28.66481239914666`", ",", 
+         RowBox[{"-", "82.52332310182058`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"19893297","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"32.655995953676154`", ",", 
+         RowBox[{"-", "83.45857943324698`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"10097343","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"19.608027334596777`", ",", 
+         RowBox[{"-", "155.54541155520442`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"1419561","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"44.39763809452522`", ",", 
+         RowBox[{"-", "114.6647170728324`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"1634464","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"40.06701096951178`", ",", 
+         RowBox[{"-", "89.19984461420816`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"12880580","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"39.90911044712073`", ",", 
+         RowBox[{"-", "86.28690883021002`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"6596855","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"42.079783931683664`", ",", 
+         RowBox[{"-", "93.49057031433053`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"3107126","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"38.4856996201788`", ",", 
+         RowBox[{"-", "98.3741157330955`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"2904021","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"37.526171421239084`", ",", 
+         RowBox[{"-", "85.28081094826666`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"4413457","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"31.054982270700837`", ",", 
+         RowBox[{"-", "91.99673945385084`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"4649676","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"45.36146863422974`", ",", 
+         RowBox[{"-", "69.26289727637295`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"1330089","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"39.016534884757455`", ",", 
+         RowBox[{"-", "76.77435365748076`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"5976407","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"42.24883192802069`", ",", 
+         RowBox[{"-", "71.78597560325983`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"6745408","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"43.460212174370994`", ",", 
+         RowBox[{"-", "84.6232132017515`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"9909877","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"46.32345684644935`", ",", 
+         RowBox[{"-", "94.2933130768429`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"5457173","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"32.7402598983134`", ",", 
+         RowBox[{"-", "89.66777614525104`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"2994079","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"38.37352016618482`", ",", 
+         RowBox[{"-", "92.47354496346969`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"6063589","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"47.04021063329052`", ",", 
+         RowBox[{"-", "109.65281665076692`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"1023579","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"41.52775208447308`", ",", 
+         RowBox[{"-", "99.8077778378064`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"1881503","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"39.34008683239523`", ",", 
+         RowBox[{"-", "116.66290378891557`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"2839099","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"43.67359217260562`", ",", 
+         RowBox[{"-", "71.59379592024038`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"1326813","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"40.18797225104717`", ",", 
+         RowBox[{"-", "74.6814040911826`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"8938175","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"34.42741407660169`", ",", 
+         RowBox[{"-", "106.10317519649905`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"2085572","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"42.95693438016504`", ",", 
+         RowBox[{"-", "75.52799848521127`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"19746227","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"35.52877742497853`", ",", 
+         RowBox[{"-", "79.38062582870738`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"9943964","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"47.443370627853625`", ",", 
+         RowBox[{"-", "100.47405512947441`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"739482","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"40.278872453822444`", ",", 
+         RowBox[{"-", "82.79279835026352`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"11594163","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"35.58709543698487`", ",", 
+         RowBox[{"-", "97.51442484483653`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"3878051","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"43.93217218297954`", ",", 
+         RowBox[{"-", "120.56754310845571`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"3970239","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"40.87578136451641`", ",", 
+         RowBox[{"-", "77.80234691793905`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"12787209","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"41.669424812226474`", ",", 
+         RowBox[{"-", "71.5888162785793`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"1055173","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"33.907688448479384`", ",", 
+         RowBox[{"-", "80.8987933519374`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"4832482","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"44.434954234164735`", ",", 
+         RowBox[{"-", "100.2262046283009`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"853175","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"35.84720459354897`", ",", 
+         RowBox[{"-", "86.3527613500658`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"6549352","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"31.48178818314407`", ",", 
+         RowBox[{"-", "99.37005326650524`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"26956958","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"39.32431751897282`", ",", 
+         RowBox[{"-", "111.67720542443352`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"2942902","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"44.071233917758384`", ",", 
+         RowBox[{"-", "72.66957819625297`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"626562","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"37.51336919099817`", ",", 
+         RowBox[{"-", "78.92051055564825`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"8326289","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"47.379328673432425`", ",", 
+         RowBox[{"-", "120.4163870662428`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"7061530","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"38.6347474475439`", ",", 
+         RowBox[{"-", "80.6001940512084`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"1850326","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"44.63401817096603`", ",", 
+         RowBox[{"-", "90.02054765642295`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"5757564","\"people\"","people","\"People\""},
+       "QuantityTF"]}], ",", 
+     RowBox[{
+      RowBox[{"GeoPosition", "[", 
+       RowBox[{"{", 
+        RowBox[{"43.000376307441236`", ",", 
+         RowBox[{"-", "107.55176426564579`"}]}], "}"}], "]"}], "\[Rule]", 
+      TemplateBox[{"584153","\"people\"","people","\"People\""},
+       "QuantityTF"]}]}], "}"}], ")"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.7073406067830353`*^9},
+ CellLabel->"Out[44]="]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sort states by latitude", "Section",
+ CellChangeTimes->{{3.705683964567428*^9, 3.705683981488122*^9}, {
+  3.7073376836169453`*^9, 3.7073376907305*^9}, {3.707339838480287*^9, 
+  3.707339839871126*^9}},
+ ExpressionUUID -> "f0c6a117-d548-42c8-9c3b-9ee77e56e10d"],
+
+Cell["Use Sort function to order list by latitude", "Direction",
+ CellChangeTimes->{{3.7056860922471857`*^9, 3.7056860957264357`*^9}, {
+  3.7073377012558393`*^9, 3.707337712737384*^9}},
+ ExpressionUUID -> "c047c7df-c173-4bb9-9228-e3a555970caf"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"statePopulationLatitudeSort", " ", "=", " ", 
+  RowBox[{"Sort", "[", 
+   RowBox[{"statePopulation", ",", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#1", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], " ", "<", " ", 
+      RowBox[{"#2", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], " ", "&"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.700774287998974*^9, 3.700774297728869*^9}, {
+  3.7051045527899556`*^9, 3.7051045647306385`*^9}, {3.705105385992612*^9, 
+  3.7051053864506383`*^9}, {3.7073377260325003`*^9, 3.70733779013826*^9}},
+ CellLabel->"In[6]:=",
+ ExpressionUUID -> "4c715b31-2a62-4596-a29b-b8862f0a8952"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"\<\"Hawaii, United States\"\>", 
+      TemplateBox[{
+       "19.608027334596777`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "155.54541155520442`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1419561","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Florida, United States\"\>", 
+      TemplateBox[{
+       "28.66481239914666`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "82.52332310182058`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"19893297","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Louisiana, United States\"\>", 
+      TemplateBox[{
+       "31.054982270700837`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "91.99673945385084`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4649676","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Texas, United States\"\>", 
+      TemplateBox[{
+       "31.48178818314407`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "99.37005326650524`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"26956958","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Georgia, United States\"\>", 
+      TemplateBox[{
+       "32.655995953676154`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "83.45857943324698`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"10097343","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Mississippi, United States\"\>", 
+      TemplateBox[{
+       "32.7402598983134`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "89.66777614525104`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2994079","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Alabama, United States\"\>", 
+      TemplateBox[{
+       "32.78066773274687`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "86.8336642480287`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4849377","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"South Carolina, United States\"\>", 
+      TemplateBox[{
+       "33.907688448479384`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "80.8987933519374`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4832482","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Arizona, United States\"\>", 
+      TemplateBox[{
+       "34.328710239492224`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "111.67006954108902`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6731484","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New Mexico, United States\"\>", 
+      TemplateBox[{
+       "34.42741407660169`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "106.10317519649905`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2085572","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Arkansas, United States\"\>", 
+      TemplateBox[{
+       "34.90006710307509`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "92.43725329448506`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2966369","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"North Carolina, United States\"\>", 
+      TemplateBox[{
+       "35.52877742497853`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "79.38062582870738`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"9943964","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Oklahoma, United States\"\>", 
+      TemplateBox[{
+       "35.58709543698487`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "97.51442484483653`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3878051","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Tennessee, United States\"\>", 
+      TemplateBox[{
+       "35.84720459354897`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "86.3527613500658`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6549352","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"California, United States\"\>", 
+      TemplateBox[{
+       "37.28105574018539`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "119.64765211057427`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"38802500","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Virginia, United States\"\>", 
+      TemplateBox[{
+       "37.51336919099817`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "78.92051055564825`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"8326289","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Kentucky, United States\"\>", 
+      TemplateBox[{
+       "37.526171421239084`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "85.28081094826666`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4413457","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Missouri, United States\"\>", 
+      TemplateBox[{
+       "38.37352016618482`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "92.47354496346969`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6063589","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Kansas, United States\"\>", 
+      TemplateBox[{
+       "38.4856996201788`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "98.3741157330955`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2904021","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"West Virginia, United States\"\>", 
+      TemplateBox[{
+       "38.6347474475439`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "80.6001940512084`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1850326","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"District of Columbia, United States\"\>", 
+      TemplateBox[{
+       "38.90259682899752`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "77.01587688229873`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"658893","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Delaware, United States\"\>", 
+      TemplateBox[{
+       "38.96298211603413`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "75.50393849420063`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"935614","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Colorado, United States\"\>", 
+      TemplateBox[{
+       "39.00014688081292`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "105.546963587799`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5355866","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Maryland, United States\"\>", 
+      TemplateBox[{
+       "39.016534884757455`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "76.77435365748076`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5976407","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Utah, United States\"\>", 
+      TemplateBox[{
+       "39.32431751897282`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "111.67720542443352`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2942902","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Nevada, United States\"\>", 
+      TemplateBox[{
+       "39.34008683239523`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "116.66290378891557`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2839099","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Indiana, United States\"\>", 
+      TemplateBox[{
+       "39.90911044712073`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "86.28690883021002`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6596855","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Illinois, United States\"\>", 
+      TemplateBox[{
+       "40.06701096951178`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "89.19984461420816`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"12880580","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New Jersey, United States\"\>", 
+      TemplateBox[{
+       "40.18797225104717`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "74.6814040911826`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"8938175","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Ohio, United States\"\>", 
+      TemplateBox[{
+       "40.278872453822444`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "82.79279835026352`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"11594163","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Pennsylvania, United States\"\>", 
+      TemplateBox[{
+       "40.87578136451641`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "77.80234691793905`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"12787209","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Nebraska, United States\"\>", 
+      TemplateBox[{
+       "41.52775208447308`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "99.8077778378064`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1881503","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Connecticut, United States\"\>", 
+      TemplateBox[{
+       "41.60433638903997`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "72.70147679683339`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3596677","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Rhode Island, United States\"\>", 
+      TemplateBox[{
+       "41.669424812226474`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "71.5888162785793`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1055173","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Iowa, United States\"\>", 
+      TemplateBox[{
+       "42.079783931683664`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "93.49057031433053`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3107126","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Massachusetts, United States\"\>", 
+      TemplateBox[{
+       "42.24883192802069`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "71.78597560325983`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6745408","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New York, United States\"\>", 
+      TemplateBox[{
+       "42.95693438016504`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "75.52799848521127`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"19746227","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Wyoming, United States\"\>", 
+      TemplateBox[{
+       "43.000376307441236`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "107.55176426564579`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"584153","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Michigan, United States\"\>", 
+      TemplateBox[{
+       "43.460212174370994`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "84.6232132017515`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"9909877","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New Hampshire, United States\"\>", 
+      TemplateBox[{
+       "43.67359217260562`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "71.59379592024038`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1326813","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Oregon, United States\"\>", 
+      TemplateBox[{
+       "43.93217218297954`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "120.56754310845571`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3970239","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Vermont, United States\"\>", 
+      TemplateBox[{
+       "44.071233917758384`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "72.66957819625297`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"626562","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Idaho, United States\"\>", 
+      TemplateBox[{
+       "44.39763809452522`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "114.6647170728324`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1634464","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"South Dakota, United States\"\>", 
+      TemplateBox[{
+       "44.434954234164735`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "100.2262046283009`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"853175","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Wisconsin, United States\"\>", 
+      TemplateBox[{
+       "44.63401817096603`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "90.02054765642295`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5757564","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Maine, United States\"\>", 
+      TemplateBox[{
+       "45.36146863422974`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "69.26289727637295`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1330089","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Minnesota, United States\"\>", 
+      TemplateBox[{
+       "46.32345684644935`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "94.2933130768429`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5457173","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Montana, United States\"\>", 
+      TemplateBox[{
+       "47.04021063329052`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "109.65281665076692`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1023579","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Washington, United States\"\>", 
+      TemplateBox[{
+       "47.379328673432425`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "120.4163870662428`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"7061530","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"North Dakota, United States\"\>", 
+      TemplateBox[{
+       "47.443370627853625`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "100.47405512947441`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"739482","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Alaska, United States\"\>", 
+      TemplateBox[{
+       "64.53325502228302`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "152.7497197704388`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"736732","\"people\"","people","\"People\""},
+       "QuantityTF"]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.700774298524872*^9, 3.7010040356134663`*^9, 
+  3.7051045663507314`*^9, 3.7051053877697144`*^9, 3.7073377951424294`*^9},
+ CellLabel->"Out[6]=",
+ ExpressionUUID -> "78dd550b-5475-4989-8b86-e91a411265bc"]
+}, Open  ]],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.705104661930198*^9, 3.705104689215759*^9}, {
+   3.7051047393916287`*^9, 3.705104783753166*^9}, {3.7051049729169855`*^9, 
+   3.7051050045267935`*^9}, {3.705169822193218*^9, 3.705169825188218*^9}, 
+   3.707338030920416*^9},
+ ExpressionUUID -> "af2fbde5-0fd1-4037-b7ca-aca4d90aed35"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sort states by longitude", "Section",
+ CellChangeTimes->{{3.707337844176078*^9, 3.707337851000429*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"statePopulationLongitudeSort", " ", "=", " ", 
+  RowBox[{"Sort", "[", 
+   RowBox[{"statePopulation", ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#1", "[", 
+       RowBox[{"[", "3", "]"}], "]"}], " ", "<", " ", 
+      RowBox[{"#2", "[", 
+       RowBox[{"[", "3", "]"}], "]"}]}], " ", "&"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.707337870356533*^9, 3.7073379239489927`*^9}},
+ CellLabel->"In[7]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"\<\"Hawaii, United States\"\>", 
+      TemplateBox[{
+       "19.608027334596777`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "155.54541155520442`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1419561","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Alaska, United States\"\>", 
+      TemplateBox[{
+       "64.53325502228302`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "152.7497197704388`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"736732","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Oregon, United States\"\>", 
+      TemplateBox[{
+       "43.93217218297954`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "120.56754310845571`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3970239","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Washington, United States\"\>", 
+      TemplateBox[{
+       "47.379328673432425`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "120.4163870662428`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"7061530","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"California, United States\"\>", 
+      TemplateBox[{
+       "37.28105574018539`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "119.64765211057427`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"38802500","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Nevada, United States\"\>", 
+      TemplateBox[{
+       "39.34008683239523`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "116.66290378891557`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2839099","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Idaho, United States\"\>", 
+      TemplateBox[{
+       "44.39763809452522`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "114.6647170728324`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1634464","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Utah, United States\"\>", 
+      TemplateBox[{
+       "39.32431751897282`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "111.67720542443352`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2942902","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Arizona, United States\"\>", 
+      TemplateBox[{
+       "34.328710239492224`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "111.67006954108902`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6731484","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Montana, United States\"\>", 
+      TemplateBox[{
+       "47.04021063329052`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "109.65281665076692`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1023579","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Wyoming, United States\"\>", 
+      TemplateBox[{
+       "43.000376307441236`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "107.55176426564579`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"584153","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New Mexico, United States\"\>", 
+      TemplateBox[{
+       "34.42741407660169`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "106.10317519649905`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2085572","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Colorado, United States\"\>", 
+      TemplateBox[{
+       "39.00014688081292`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "105.546963587799`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5355866","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"North Dakota, United States\"\>", 
+      TemplateBox[{
+       "47.443370627853625`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "100.47405512947441`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"739482","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"South Dakota, United States\"\>", 
+      TemplateBox[{
+       "44.434954234164735`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "100.2262046283009`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"853175","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Nebraska, United States\"\>", 
+      TemplateBox[{
+       "41.52775208447308`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "99.8077778378064`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1881503","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Texas, United States\"\>", 
+      TemplateBox[{
+       "31.48178818314407`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "99.37005326650524`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"26956958","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Kansas, United States\"\>", 
+      TemplateBox[{
+       "38.4856996201788`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "98.3741157330955`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2904021","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Oklahoma, United States\"\>", 
+      TemplateBox[{
+       "35.58709543698487`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "97.51442484483653`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3878051","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Minnesota, United States\"\>", 
+      TemplateBox[{
+       "46.32345684644935`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "94.2933130768429`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5457173","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Iowa, United States\"\>", 
+      TemplateBox[{
+       "42.079783931683664`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "93.49057031433053`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3107126","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Missouri, United States\"\>", 
+      TemplateBox[{
+       "38.37352016618482`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "92.47354496346969`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6063589","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Arkansas, United States\"\>", 
+      TemplateBox[{
+       "34.90006710307509`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "92.43725329448506`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2966369","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Louisiana, United States\"\>", 
+      TemplateBox[{
+       "31.054982270700837`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "91.99673945385084`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4649676","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Wisconsin, United States\"\>", 
+      TemplateBox[{
+       "44.63401817096603`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "90.02054765642295`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5757564","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Mississippi, United States\"\>", 
+      TemplateBox[{
+       "32.7402598983134`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "89.66777614525104`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"2994079","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Illinois, United States\"\>", 
+      TemplateBox[{
+       "40.06701096951178`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "89.19984461420816`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"12880580","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Alabama, United States\"\>", 
+      TemplateBox[{
+       "32.78066773274687`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "86.8336642480287`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4849377","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Tennessee, United States\"\>", 
+      TemplateBox[{
+       "35.84720459354897`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "86.3527613500658`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6549352","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Indiana, United States\"\>", 
+      TemplateBox[{
+       "39.90911044712073`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "86.28690883021002`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6596855","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Kentucky, United States\"\>", 
+      TemplateBox[{
+       "37.526171421239084`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "85.28081094826666`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4413457","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Michigan, United States\"\>", 
+      TemplateBox[{
+       "43.460212174370994`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "84.6232132017515`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"9909877","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Georgia, United States\"\>", 
+      TemplateBox[{
+       "32.655995953676154`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "83.45857943324698`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"10097343","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Ohio, United States\"\>", 
+      TemplateBox[{
+       "40.278872453822444`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "82.79279835026352`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"11594163","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Florida, United States\"\>", 
+      TemplateBox[{
+       "28.66481239914666`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "82.52332310182058`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"19893297","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"South Carolina, United States\"\>", 
+      TemplateBox[{
+       "33.907688448479384`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "80.8987933519374`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"4832482","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"West Virginia, United States\"\>", 
+      TemplateBox[{
+       "38.6347474475439`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "80.6001940512084`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1850326","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"North Carolina, United States\"\>", 
+      TemplateBox[{
+       "35.52877742497853`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "79.38062582870738`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"9943964","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Virginia, United States\"\>", 
+      TemplateBox[{
+       "37.51336919099817`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "78.92051055564825`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"8326289","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Pennsylvania, United States\"\>", 
+      TemplateBox[{
+       "40.87578136451641`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "77.80234691793905`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"12787209","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"District of Columbia, United States\"\>", 
+      TemplateBox[{
+       "38.90259682899752`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "77.01587688229873`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"658893","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Maryland, United States\"\>", 
+      TemplateBox[{
+       "39.016534884757455`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "76.77435365748076`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"5976407","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New York, United States\"\>", 
+      TemplateBox[{
+       "42.95693438016504`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "75.52799848521127`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"19746227","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Delaware, United States\"\>", 
+      TemplateBox[{
+       "38.96298211603413`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "75.50393849420063`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"935614","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New Jersey, United States\"\>", 
+      TemplateBox[{
+       "40.18797225104717`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "74.6814040911826`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"8938175","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Connecticut, United States\"\>", 
+      TemplateBox[{
+       "41.60433638903997`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "72.70147679683339`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"3596677","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Vermont, United States\"\>", 
+      TemplateBox[{
+       "44.071233917758384`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "72.66957819625297`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"626562","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Massachusetts, United States\"\>", 
+      TemplateBox[{
+       "42.24883192802069`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "71.78597560325983`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"6745408","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"New Hampshire, United States\"\>", 
+      TemplateBox[{
+       "43.67359217260562`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "71.59379592024038`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1326813","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Rhode Island, United States\"\>", 
+      TemplateBox[{
+       "41.669424812226474`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "71.5888162785793`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1055173","\"people\"","people","\"People\""},
+       "QuantityTF"]},
+     {"\<\"Maine, United States\"\>", 
+      TemplateBox[{
+       "45.36146863422974`",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        "degrees","\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{
+       RowBox[{"-", "69.26289727637295`"}],
+        RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "\"AngularDegrees\""},
+       "QuantityPostfixTF"], 
+      TemplateBox[{"1330089","\"people\"","people","\"People\""},
+       "QuantityTF"]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.707337926309704*^9},
+ CellLabel->"Out[7]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sum the population", "Section",
+ CellChangeTimes->{{3.707338048112434*^9, 3.707338062839861*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"getPopulationList", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"Part", "[", 
+     RowBox[{"#", ",", " ", "4"}], "]"}], " ", "&"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"populationList", " ", "=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{"getPopulationList", ",", "statePopulation"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"populationTotal", " ", "=", " ", 
+   RowBox[{"Total", "[", "populationList", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{
+  3.7073381030767937`*^9, {3.7073383780959883`*^9, 3.7073383896071167`*^9}, {
+   3.7073385300200987`*^9, 3.707338531155465*^9}, {3.707338606573119*^9, 
+   3.707338750623361*^9}, {3.7073387897682953`*^9, 3.707338827938138*^9}},
+ CellLabel->"In[20]:="],
+
+Cell[BoxData[
+ FormBox[
+  TemplateBox[{"318857056","\"people\"","people","\"People\""},
+   "QuantityTF"], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.7073383920170918`*^9, 3.707338532998365*^9, {3.707338709878393*^9, 
+   3.7073387525850983`*^9}, 3.70733879551446*^9, 3.707338829871813*^9},
+ CellLabel->"Out[22]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Find the sum of the population of each state ordered by latitude\
+\>", "Section",
+ CellChangeTimes->{{3.7073389491482267`*^9, 3.707338972212658*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"popSumLat", " ", "=", " ", 
+   RowBox[{"Quantity", "[", 
+    RowBox[{"0", ",", "\"\<people\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Map", "[", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Part", "[", 
+      RowBox[{"#", ",", " ", "4"}], "]"}], " ", "+", " ", "popSumLat"}], 
+    "&"}], ",", "statePopulationLatitudeSort"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.70733903783829*^9, 3.707339044589679*^9}, {
+  3.707339103040244*^9, 3.707339235634234*^9}, {3.7073393078528337`*^9, 
+  3.707339318043962*^9}, {3.707339452368142*^9, 3.707339543112706*^9}, {
+  3.707339607931672*^9, 3.7073396366322308`*^9}},
+ CellLabel->"In[33]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    TemplateBox[{"1419561","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"19893297","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"4649676","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"26956958","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"10097343","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"2994079","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"4849377","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"4832482","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"6731484","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"2085572","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"2966369","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"9943964","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"3878051","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"6549352","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"38802500","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"8326289","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"4413457","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"6063589","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"2904021","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"1850326","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"658893","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"935614","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"5355866","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"5976407","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"2942902","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"2839099","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"6596855","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"12880580","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"8938175","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"11594163","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"12787209","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"1881503","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"3596677","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"1055173","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"3107126","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"6745408","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"19746227","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"584153","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"9909877","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"1326813","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"3970239","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"626562","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"1634464","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"853175","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"5757564","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"1330089","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"5457173","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"1023579","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"7061530","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"739482","\"people\"","people","\"People\""},
+     "QuantityTF"], ",", 
+    TemplateBox[{"736732","\"people\"","people","\"People\""},
+     "QuantityTF"]}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.707339241458538*^9, 3.707339322042025*^9, 3.707339492110462*^9, 
+   3.707339522720817*^9, {3.707339616260488*^9, 3.707339640446499*^9}},
+ CellLabel->"Out[34]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["",
+ FontSize->18,
+ FontColor->GrayLevel[0.5]]], "Section",
+ CellChangeTimes->{{3.70510464885445*^9, 3.7051046548567934`*^9}, {
+   3.7051046932679906`*^9, 3.7051047014174566`*^9}, {3.705686116931855*^9, 
+   3.7056861543411007`*^9}, 3.70733808595925*^9, 3.7073406999543*^9},
+ ExpressionUUID -> "f30ea53f-deff-444d-974a-28c8c2f3a895"],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.705105405379721*^9, 3.7051054963769255`*^9}, {
+  3.705105533220033*^9, 3.705105546902816*^9}, {3.7051057273781385`*^9, 
+  3.7051057494323997`*^9}, {3.705169934558218*^9, 3.705169973362218*^9}, {
+  3.707340706338323*^9, 3.7073407200744343`*^9}},
+ ExpressionUUID -> "d8126cd1-cd45-4529-882a-d2b29c561121"],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.705105405379721*^9, 3.7051054963769255`*^9}, {
+   3.705105533220033*^9, 3.705105546902816*^9}, {3.7051057273781385`*^9, 
+   3.7051057494323997`*^9}, {3.705169934558218*^9, 3.705169988457218*^9}, {
+   3.705684730078251*^9, 3.705684763960388*^9}, 3.707340735380383*^9},
+ ExpressionUUID -> "b42a942c-d3e7-41ba-ab5d-755b614056d3"],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.705105405379721*^9, 3.7051054963769255`*^9}, {
+   3.705105533220033*^9, 3.705105546902816*^9}, {3.7051057273781385`*^9, 
+   3.7051057494323997`*^9}, {3.705169934558218*^9, 3.705169988457218*^9}, {
+   3.705684730078251*^9, 3.705684755671308*^9}, 3.707340740419073*^9},
+ ExpressionUUID -> "6e51c73c-7af9-435e-85d8-d0d312ebc7e4"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Further Explorations", "FurtherExplorationSection",
+ CellChangeTimes->{{3.70077612322993*^9, 3.7007761320921593`*^9}, {
+  3.7007787731699142`*^9, 
+  3.70077877480995*^9}},ExpressionUUID->"5935468f-4faf-42ec-9ce5-\
+cfaecb303b1f"],
+
+Cell["Name of a related topic for exploration", "FurtherExploration",
+ CellChangeTimes->{{3.7007765492418337`*^9, 3.7007765636102467`*^9}, {
+  3.705104213701561*^9, 3.7051042224510612`*^9}, {3.7051697227932177`*^9, 
+  3.7051697367862177`*^9}, {3.7056847753333597`*^9, 3.7056847788413363`*^9}, {
+  3.705686193025524*^9, 
+  3.7056861967297907`*^9}},ExpressionUUID->"b4100690-211f-41f7-8c23-\
+49bcc3755059"],
+
+Cell["\<\
+Name of another related topics for exploration (repeat as needed)\
+\>", "FurtherExploration",
+ CellChangeTimes->{{3.7007765492418337`*^9, 3.7007765636102467`*^9}, {
+  3.705104213701561*^9, 3.7051042224510612`*^9}, {3.705105582902875*^9, 
+  3.7051055862950687`*^9}, {3.705686185124048*^9, 
+  3.705686188552953*^9}},ExpressionUUID->"6936b600-b7e1-40dc-865f-\
+482c7e0667fb"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Authorship information", "AuthorshipSection",
+ CellChangeTimes->{{3.705105762145127*^9, 
+  3.7051057665253773`*^9}},ExpressionUUID->"42680d10-3d1a-461c-afab-\
+eec165779504"],
+
+Cell["Maurice Barrant", "Authorship",
+ CellChangeTimes->{{3.7051057700535793`*^9, 3.7051057808261957`*^9}, {
+  3.707340655866445*^9, 3.707340661712027*^9}},
+ ExpressionUUID -> "5102885a-34eb-44ab-80db-aa3710dbd08a"],
+
+Cell["23 June 2017", "Authorship",
+ CellChangeTimes->{{3.705105786521521*^9, 3.7051057998362827`*^9}, {
+  3.707340667809636*^9, 3.70734067231359*^9}},
+ ExpressionUUID -> "a955aad8-c1c5-41e7-ad9b-f592f4a82734"],
+
+Cell["mbarrant@icloud.com", "Authorship",
+ CellChangeTimes->{{3.7051058070526953`*^9, 3.705105841815684*^9}, {
+  3.707340678361568*^9, 3.707340682964991*^9}},
+ ExpressionUUID -> "31ae3bf8-c288-4b0b-bca6-5f0155809418"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{Automatic, 791}, {Automatic, 105}},
+DockedCells->Cell[
+  BoxData[
+   TagBox[
+    GridBox[{{
+       ItemBox["\"\"", ItemSize -> 0.2, StripOnInput -> False], 
+       DynamicModuleBox[{}, 
+        ActionMenuBox[
+        "\"Insert\"", {
+         "\"Section\"" :> 
+          Module[{$CellContext`nb = ButtonNotebook[]}, 
+            Exploration`MoveCursorAfterCellPosition[$CellContext`nb]; 
+            NotebookWrite[$CellContext`nb, 
+              Cell[
+               CellGroupData[{
+                 Cell["XXXX", "Section"], 
+                 Cell["XXXX", "Text"], 
+                 Cell["XXXX", "Direction"], 
+                 Cell[
+                  BoxData["XXXX"], "Input"]}, Open]], All]; 
+            SelectionMove[$CellContext`nb, Before, Cell]; 
+            SelectionMove[$CellContext`nb, Next, Cell]; 
+            SelectionMove[$CellContext`nb, All, CellContents]], Delimiter, 
+          "\"Text\"" :> 
+          Module[{$CellContext`nb = ButtonNotebook[]}, 
+            Exploration`MoveCursorAfterCellPosition[$CellContext`nb]; 
+            NotebookWrite[$CellContext`nb, 
+              Cell["XXXX", "Text"], All]; 
+            SelectionMove[$CellContext`nb, All, CellContents]], 
+          "\"Direction\"" :> 
+          Module[{$CellContext`nb = ButtonNotebook[]}, 
+            Exploration`MoveCursorAfterCellPosition[$CellContext`nb]; 
+            NotebookWrite[$CellContext`nb, 
+              Cell["XXXX", "Direction"], All]; 
+            SelectionMove[$CellContext`nb, All, CellContents]], 
+          "\"Further Exploration\"" :> 
+          Module[{$CellContext`nb = ButtonNotebook[]}, 
+            Exploration`MoveCursorAfterCellPosition[$CellContext`nb]; 
+            NotebookWrite[$CellContext`nb, 
+              Cell["XXXX", "FurtherExploration"], All]; 
+            SelectionMove[$CellContext`nb, All, CellContents]]}, Method -> 
+         "Queued", Appearance -> "PopupMenu", FrameMargins -> 2.4], 
+        Initialization :> (Exploration`MoveCursorAfterCellPosition[
+           Pattern[$CellContext`nb, 
+            Blank[]]] := Which[
+           MatchQ[
+            Developer`CellInformation[$CellContext`nb], {
+             Repeated[{
+               BlankSequence[], "CursorPosition" -> "CellBracket", 
+               BlankSequence[]}]}], 
+           SelectionMove[$CellContext`nb, After, Cell], 
+           Developer`CellInformation[$CellContext`nb] =!= $Failed, 
+           Module[{$CellContext`lnkre}, 
+             While[(LinkWrite[$ParentLink, 
+                 
+                 FrontEnd`CellInformation[$CellContext`nb]]; \
+$CellContext`lnkre = LinkRead[$ParentLink]); 
+              And[$CellContext`lnkre =!= $Failed, 
+                Not[
+                 MemberQ[
+                  ReplaceAll["CursorPosition", $CellContext`lnkre], 
+                  "CellBracket"]]], 
+              FrontEndExecute[
+               
+               FrontEnd`SelectionMove[$CellContext`nb, All, Cell, AutoScroll -> 
+                False]]]]; SelectionMove[$CellContext`nb, After, Cell]]), 
+        DynamicModuleValues :> {}], 
+       ItemBox["\"\"", ItemSize -> Fit, StripOnInput -> False], 
+       ButtonBox["\"Sample\"", ButtonFunction :> NotebookOpen[
+          
+          FileNameJoin[{$UserBaseDirectory, "Applications", 
+            "SummerSchoolTemplates", "FrontEnd", "TextResources", 
+            "TopicExplorationExample.nb"}]], Appearance -> Automatic, 
+        Evaluator -> Automatic, Method -> "Queued"]}}, AutoDelete -> False, 
+     GridBoxItemSize -> {
+      "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Grid"]], 
+  "DockedCell"],
+CellLabelAutoDelete->False,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Title"], FontFamily -> "Source Sans Pro", FontTracking -> -0.8,
+     FontColor -> RGBColor[0.65, 0, 0]], 
+   Cell[
+    StyleData["Abstract", StyleDefinitions -> StyleData["Text"]], FontSize -> 
+    16, FontSlant -> "Italic", FontColor -> GrayLevel[0.4]], 
+   Cell[
+    StyleData["Section"], CellFrame -> False, FontFamily -> "Source Sans Pro",
+     FontTracking -> -0.5, $CellContext`ReturnCreatesNewCell -> 
+    True, $CellContext`DefaultReturnCreatedCellStyle -> "Text"], 
+   Cell[
+    StyleData["FurtherExplorationSection"], 
+    CellMargins -> {{28, Inherited}, {6, 24}}, 
+    CellGroupingRules -> {"SectionGrouping", 30}, DefaultNewCellStyle -> 
+    "FurtherExploration", FontFamily -> "Source Sans Pro Semibold", FontSize -> 
+    22, FontColor -> GrayLevel[0.35]], 
+   Cell[
+    StyleData["FurtherExploration", StyleDefinitions -> StyleData["Text"]], 
+    CellMargins -> {{66, 10}, {5, 5}}, FontSize -> 14, FontWeight -> "Bold", 
+    FontColor -> GrayLevel[0.5], $CellContext`ReturnCreatesNewCell -> True], 
+   Cell[
+    StyleData["AuthorshipSection"], CellMargins -> {{28, Inherited}, {6, 24}},
+     CellGroupingRules -> {"SectionGrouping", 30}, DefaultNewCellStyle -> 
+    "FurtherExploration", FontFamily -> "Source Sans Pro Semibold", FontSize -> 
+    22, FontColor -> GrayLevel[0.35]], 
+   Cell[
+    StyleData["Authorship", StyleDefinitions -> StyleData["Text"]], 
+    CellMargins -> {{66, 10}, {4, 4}}, FontSize -> 14, FontColor -> 
+    GrayLevel[0.5], $CellContext`ReturnCreatesNewCell -> True], 
+   Cell[
+    StyleData["Text"], DefaultNewCellStyle -> 
+    "Direction", $CellContext`ReturnCreatesNewCell -> 
+    True, $CellContext`DefaultReturnCreatedCellStyle -> "Direction"], 
+   Cell[
+    StyleData["Direction", StyleDefinitions -> StyleData["Text"]], 
+    CellDingbat -> 
+    StyleBox["\[FilledSmallSquare]", FontColor -> GrayLevel[0.7]], 
+    CellMargins -> {{78, 10}, {6, 7}}, CellFrameLabelMargins -> 4, 
+    MenuSortingValue -> 10000, MenuCommandKey -> "8", FontSize -> 14, 
+    FontWeight -> "Plain", FontColor -> 
+    GrayLevel[0.4], $CellContext`DefaultReturnCreatedCellStyle -> "Input"], 
+   Cell[
+    StyleData["Code"], MenuCommandKey -> None]}, Visible -> False, 
+  FrontEndVersion -> 
+  "11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 21, 2016)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 363, 5, 97, "Title"],
+Cell[946, 29, 461, 8, 55, "Abstract"],
+Cell[CellGroupData[{
+Cell[1432, 41, 381, 5, 62, "Section"],
+Cell[1816, 48, 477, 9, 30, "Text"],
+Cell[2296, 59, 534, 9, 31, "Direction"],
+Cell[CellGroupData[{
+Cell[2855, 72, 799, 18, 75, "Input"],
+Cell[3657, 92, 25681, 630, 880, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29387, 728, 109, 1, 62, "Section"],
+Cell[CellGroupData[{
+Cell[29521, 733, 747, 19, 54, "Input"],
+Cell[30271, 754, 14291, 362, 454, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[44599, 1121, 191, 4, 26, "Input"],
+Cell[44793, 1127, 14691, 363, 454, "Output"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59533, 1496, 265, 4, 62, "Section"],
+Cell[59801, 1502, 244, 3, 31, "Direction"],
+Cell[CellGroupData[{
+Cell[60070, 1509, 641, 14, 32, "Input"],
+Cell[60714, 1525, 25729, 630, 880, "Output"]
+}, Open  ]],
+Cell[86458, 2158, 319, 5, 30, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[86814, 2168, 109, 1, 62, "Section"],
+Cell[CellGroupData[{
+Cell[86948, 2173, 429, 11, 32, "Input"],
+Cell[87380, 2186, 25571, 628, 880, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[113000, 2820, 103, 1, 62, "Section"],
+Cell[CellGroupData[{
+Cell[113128, 2825, 819, 20, 117, "Input"],
+Cell[113950, 2847, 322, 7, 28, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[114321, 2860, 159, 3, 62, "Section"],
+Cell[CellGroupData[{
+Cell[114505, 2867, 694, 17, 54, "Input"],
+Cell[115202, 2886, 4859, 109, 148, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[120110, 3001, 355, 6, 49, "Section"],
+Cell[120468, 3009, 342, 5, 30, "Text"],
+Cell[120813, 3016, 365, 5, 30, "Text"],
+Cell[121181, 3023, 365, 5, 30, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[121583, 3033, 234, 4, 39, "FurtherExplorationSection"],
+Cell[121820, 3039, 404, 6, 26, "FurtherExploration"],
+Cell[122227, 3047, 381, 7, 26, "FurtherExploration"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[122645, 3059, 179, 3, 59, "AuthorshipSection"],
+Cell[122827, 3064, 215, 3, 24, "Authorship"],
+Cell[123045, 3069, 209, 3, 24, "Authorship"],
+Cell[123257, 3074, 217, 3, 24, "Authorship"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
